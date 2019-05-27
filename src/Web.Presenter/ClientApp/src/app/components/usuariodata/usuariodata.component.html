@@ -1,0 +1,23 @@
+<h1>Dados dos usuários</h1>
+<p>O componente somente exibira os dados carregados, após validação de token, do servidor.</p>
+<p *ngIf="!usuariolist"><em>Carregando...</em></p>
+<p> <a [routerLink]="['/add-usuario']">Criar novo</a> </p>
+<table class='table table-bordered' *ngIf="usuariolist">
+  <thead style="background-color:green;font-weight:bold;color:white;">
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Login</th>
+      <th>Senha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usu of usuariolist">
+      <td>{{ usu.nome }}</td>
+      <td>{{ usu.email }}</td>
+      <td>{{ usu.login }}</td>
+      <td>{{ usu.senha }}</td>
+      <td> <a [routerLink]="['/usuario/edit/', usu.Id]">Edit</a> | <a [routerLink]="" (click)="deleteUsuario(usu.Id)">Delete</a> </td>
+    </tr>
+  </tbody>
+</table> 
